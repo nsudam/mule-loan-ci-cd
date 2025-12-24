@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="1574baa7-3884-49bd-bf33-6c665593e2a6" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="loan-web-servicesFlow" doc:id="420d1ff2-cd9e-4e16-ac54-3639d7dcf121" >
+		<http:listener doc:name="Listener" doc:id="e705b31d-8d7d-499f-a965-68e21fde5387" config-ref="HTTP_Listener_config" path="/testing"/>
+		<logger level="INFO" doc:name="Logger" doc:id="db645fda-890f-492b-9cd3-a02610eac568" message="#[payload]"/>
+		<ee:transform doc:name="Transform Message" doc:id="4e90b2ee-a9e1-43ae-8229-9e2f0d100f22" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"result": "ci/cd deployement successfull"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="294d9ff4-9de4-4de9-b81b-6dfa6e1bfb32" message="#[payload]"/>
+	</flow>
+</mule>
