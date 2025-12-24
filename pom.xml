@@ -13,56 +13,55 @@
 
     <name>loan-web-services</name>
 
-    <!-- ================= PROPERTIES ================= -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <!-- Mule Runtime -->
         <app.runtime>4.9.0</app.runtime>
-
-        <!-- Mule Maven Plugin -->
         <mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
-
-        <!-- CI/CD Properties -->
         <mule.env>dev</mule.env>
         <app.name>loan-web-services</app.name>
     </properties>
 
-    <!-- ================= BUILD ================= -->
     <build>
         <plugins>
 
-            <!-- Clean Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.2.0</version>
             </plugin>
 
-            <!-- Mule Maven Plugin (CloudHub Deployment) -->
             <plugin>
-    <groupId>org.mule.tools.maven</groupId>
-    <artifactId>mule-maven-plugin</artifactId>
-    <version>${mule.maven.plugin.version}</version>
-    <extensions>true</extensions>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <cloudHubDeployment>
+                        <applicationName>${app.name}</applicationName>
+                        <environment>${mule.env}</environment>
+                        <workers>1</workers>
+                        <workerType>MICRO</workerType>
+                        <region>us-east-1</region>
+                    </cloudHubDeployment>
+                </configuration>
+            </plugin>
 
-    <configuration>
-        <cloudHubDeployment>
-            <applicationName>${app.name}</applicationName>
-            <environment>${mule.env}</environment>
-
-            <workers>1</workers>
-            <workerType>MICRO</workerType>
-            <region>us-east-1</region>
-        </cloudHubDeployment>
-    </configuration>
-</plugin>
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>exchange-mule-maven-plugin</artifactId>
+                <version>0.0.23</version>
+                <executions>
+                    <execution>
+                        <id>exchange-pre-deploy</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>
 
-    <!-- ================= DEPENDENCIES ================= -->
     <dependencies>
         <dependency>
             <groupId>org.mule.connectors</groupId>
@@ -79,7 +78,6 @@
         </dependency>
     </dependencies>
 
-    <!-- ================= REPOSITORIES ================= -->
     <repositories>
         <repository>
             <id>anypoint-exchange-v3</id>
