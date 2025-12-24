@@ -27,21 +27,30 @@
     <build>
         <plugins>
 
-            <plugin>
-                <groupId>org.mule.tools.maven</groupId>
-                <artifactId>mule-maven-plugin</artifactId>
-                <version>4.3.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <cloudHubDeployment>
-                        <applicationName>${app.name}</applicationName>
-                        <environment>${mule.env}</environment>
-                        <workers>1</workers>
-                        <workerType>MICRO</workerType>
-                        <region>us-east-1</region>
-                    </cloudHubDeployment>
-                </configuration>
-            </plugin>
+<plugin>
+    <groupId>org.mule.tools.maven</groupId>
+    <artifactId>mule-maven-plugin</artifactId>
+    <version>4.3.0</version>
+    <extensions>true</extensions>
+
+    <configuration>
+        <cloudHubDeployment>
+            <applicationName>${app.name}</applicationName>
+            <environment>${mule.env}</environment>
+            <workers>1</workers>
+            <workerType>MICRO</workerType>
+            <region>us-east-1</region>
+
+            <credentials>
+                <clientId>${anypoint.clientId}</clientId>
+                <clientSecret>${anypoint.clientSecret}</clientSecret>
+                <organizationId>${anypoint.orgId}</organizationId>
+            </credentials>
+
+        </cloudHubDeployment>
+    </configuration>
+</plugin>
+
 
         </plugins>
     </build>
