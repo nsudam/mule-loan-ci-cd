@@ -22,5 +22,6 @@ output application/json
 			</ee:message>
 		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="294d9ff4-9de4-4de9-b81b-6dfa6e1bfb32" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="1c3d3222-72ca-4990-b7e7-76a79a6db374" message='#["CI/CD practice – first change"]'/>
 	</flow>
 </mule>
