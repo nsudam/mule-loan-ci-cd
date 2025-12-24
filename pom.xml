@@ -27,20 +27,12 @@
                 <extensions>true</extensions>
 
                 <configuration>
-                    <deploymentType>cloudhub</deploymentType>
-
                     <cloudHubDeployment>
                         <applicationName>loan-web-services</applicationName>
                         <environment>${mule.env}</environment>
                         <region>us-east-1</region>
                         <workers>1</workers>
                         <workerType>MICRO</workerType>
-
-                        <!-- ✅ THIS IS THE CRITICAL FIX -->
-                        <credentials>
-                            <clientId>${anypoint.platform.client_id}</clientId>
-                            <clientSecret>${anypoint.platform.client_secret}</clientSecret>
-                        </credentials>
                     </cloudHubDeployment>
                 </configuration>
             </plugin>
