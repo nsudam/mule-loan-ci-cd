@@ -17,7 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <app.runtime>4.9.0</app.runtime>
-        <mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
+        <mule.maven.plugin.version>4.5.0</mule.maven.plugin.version>
         <mule.env>dev</mule.env>
         <app.name>loan-web-services</app.name>
     </properties>
@@ -40,9 +40,13 @@
                     <cloudHubDeployment>
                         <applicationName>${app.name}</applicationName>
                         <environment>${mule.env}</environment>
+                        <region>us-east-1</region>
                         <workers>1</workers>
                         <workerType>MICRO</workerType>
-                        <region>us-east-1</region>
+                        <credentials>
+                            <clientId>${anypoint.clientId}</clientId>
+                            <clientSecret>${anypoint.clientSecret}</clientSecret>
+                        </credentials>
                     </cloudHubDeployment>
                 </configuration>
             </plugin>
