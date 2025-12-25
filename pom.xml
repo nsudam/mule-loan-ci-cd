@@ -24,7 +24,7 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.2.0</version>
 			</plugin>
-			<plugin>
+<plugin>
   <groupId>org.mule.tools.maven</groupId>
   <artifactId>mule-maven-plugin</artifactId>
   <version>4.3.0</version>
@@ -34,9 +34,11 @@
     <cloudHubDeployment>
       <uri>https://anypoint.mulesoft.com</uri>
       <provider>MC</provider>
-      <environment>${environment}</environment>
       <target>cloudhub</target>
+
       <applicationName>${applicationName}</applicationName>
+      <environment>${environment}</environment>
+
       <workers>${replicas}</workers>
       <workerType>${vCores}</workerType>
     </cloudHubDeployment>
@@ -48,6 +50,7 @@
     </anypointPlatform>
   </configuration>
 </plugin>
+
 			
 		</plugins>
 	</build>
