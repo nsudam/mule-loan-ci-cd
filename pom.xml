@@ -34,14 +34,15 @@
 					   <cloudHubDeployment>
 						  <uri>https://anypoint.mulesoft.com</uri>
 						  <muleVersion>${app.runtime}</muleVersion>
+					
+						  <auth>oauth</auth>
 						
 						  <applicationName>${applicationName}</applicationName>
 						  <environment>${environment}</environment>
 						
 						  <workers>${replicas}</workers>
 						  <workerType>${vCores}</workerType>
-						  
-						</cloudHubDeployment>		    
+						</cloudHubDeployment>
              </configuration>
 			</plugin>
 		</plugins>
