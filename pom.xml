@@ -25,25 +25,30 @@
 				<version>3.2.0</version>
 			</plugin>
 			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				
-				  <configuration>
-					   <cloudHubDeployment>
-						  <uri>https://anypoint.mulesoft.com</uri>
-						  <muleVersion>${app.runtime}</muleVersion>
-						
-						  <applicationName>${applicationName}</applicationName>
-						  <environment>${environment}</environment>
-						
-						  <workers>${replicas}</workers>
-						  <workerType>${vCores}</workerType>
-						</cloudHubDeployment>
-											   
-             </configuration>
-			</plugin>
+  <groupId>org.mule.tools.maven</groupId>
+  <artifactId>mule-maven-plugin</artifactId>
+  <version>4.3.0</version>
+  <extensions>true</extensions>
+
+  <configuration>
+    <cloudHubDeployment>
+      <uri>https://anypoint.mulesoft.com</uri>
+      <provider>MC</provider>
+      <environment>${environment}</environment>
+      <target>cloudhub</target>
+      <applicationName>${applicationName}</applicationName>
+      <workers>${replicas}</workers>
+      <workerType>${vCores}</workerType>
+    </cloudHubDeployment>
+
+    <anypointPlatform>
+      <clientId>${anypoint.platform.clientId}</clientId>
+      <clientSecret>${anypoint.platform.clientSecret}</clientSecret>
+      <organizationId>${anypoint.orgId}</organizationId>
+    </anypointPlatform>
+  </configuration>
+</plugin>
+			
 		</plugins>
 	</build>
 
