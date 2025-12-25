@@ -12,12 +12,17 @@
   <version>1.0.0-SNAPSHOT</version>
   <packaging>mule-application</packaging>
 
+  <!-- ===================== -->
+  <!-- Project Properties -->
+  <!-- ===================== -->
   <properties>
     <mule.runtime.version>4.7.2</mule.runtime.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <!-- Mule repositories -->
+  <!-- ===================== -->
+  <!-- Mule Repositories -->
+  <!-- ===================== -->
   <repositories>
     <repository>
       <id>mulesoft-releases</id>
@@ -32,10 +37,12 @@
     </pluginRepository>
   </pluginRepositories>
 
+  <!-- ===================== -->
   <!-- Dependencies -->
+  <!-- ===================== -->
   <dependencies>
 
-    <!-- HTTP Connector (REQUIRED) -->
+    <!-- HTTP Connector -->
     <dependency>
       <groupId>org.mule.connectors</groupId>
       <artifactId>mule-http-connector</artifactId>
@@ -45,7 +52,9 @@
 
   </dependencies>
 
-  <!-- Build -->
+  <!-- ===================== -->
+  <!-- Build Configuration -->
+  <!-- ===================== -->
   <build>
     <plugins>
 
@@ -57,11 +66,25 @@
 
         <configuration>
           <cloudHubDeployment>
-            <applicationName>loan-web-services</applicationName>
+
+            <!-- Anypoint Platform -->
+            <uri>https://anypoint.mulesoft.com</uri>
             <environment>${mule.env}</environment>
+            <businessGroupId>${anypoint.orgId}</businessGroupId>
+
+            <!-- Application -->
+            <applicationName>loan-web-services</applicationName>
+            <muleVersion>${mule.runtime.version}</muleVersion>
             <region>us-east-1</region>
+
+            <!-- Workers -->
             <workers>1</workers>
             <workerType>MICRO</workerType>
+
+            <!-- Connected App Authentication -->
+            <connectedAppClientId>${anypoint.clientId}</connectedAppClientId>
+            <connectedAppClientSecret>${anypoint.clientSecret}</connectedAppClientSecret>
+
           </cloudHubDeployment>
         </configuration>
 
