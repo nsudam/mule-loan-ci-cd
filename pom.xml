@@ -31,15 +31,20 @@
 				<extensions>true</extensions>
 				
 				  <configuration>
-						<cloudhub2Deployment>
-						  <uri>https://anypoint.mulesoft.com</uri>
-						  <environment>${environment}</environment>
-						  <muleVersion>${muleVersion}</muleVersion>
-						  <username>${user}</username>
-						  <password>${pass}</password>
-						  <applicationName>${appName}</applicationName>
-						  <replicas>1</replicas>
-						  <vCores>1</vCores>
+					    <cloudHubDeployment>
+					      <uri>https://anypoint.mulesoft.com</uri>
+					      <muleVersion>${app.runtime}</muleVersion>
+					      <username>${username}</username>
+					      <password>${password}</password>
+					      <applicationName>${cloudhub.application.name}</applicationName>
+					      <environment>${environment}</environment>
+					      <region>${region}</region>
+					      <workers>${workers}</workers>
+					      <workerType>${workerType}</workerType>
+					      <properties>
+					        <key>value</key>
+					      </properties>
+					    </cloudHubDeployment>
              </configuration>
 			</plugin>
 		</plugins>
