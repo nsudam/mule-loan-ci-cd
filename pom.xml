@@ -59,36 +59,22 @@
     <plugins>
 
       <plugin>
-        <groupId>org.mule.tools.maven</groupId>
-        <artifactId>mule-maven-plugin</artifactId>
-        <version>4.3.0</version>
-        <extensions>true</extensions>
+  <groupId>org.mule.tools.maven</groupId>
+  <artifactId>mule-maven-plugin</artifactId>
+  <version>4.3.0</version>
+  <extensions>true</extensions>
 
-        <configuration>
-          <cloudHubDeployment>
-
-            <!-- Anypoint Platform -->
-            <uri>https://anypoint.mulesoft.com</uri>
-            <environment>${mule.env}</environment>
-            <businessGroupId>${anypoint.orgId}</businessGroupId>
-
-            <!-- Application -->
-            <applicationName>loan-web-services</applicationName>
-            <muleVersion>${mule.runtime.version}</muleVersion>
-            <region>us-east-1</region>
-
-            <!-- Workers -->
-            <workers>1</workers>
-            <workerType>MICRO</workerType>
-
-            <!-- Connected App Authentication -->
-            <connectedAppClientId>${anypoint.clientId}</connectedAppClientId>
-            <connectedAppClientSecret>${anypoint.clientSecret}</connectedAppClientSecret>
-
-          </cloudHubDeployment>
-        </configuration>
-
-      </plugin>
+  <configuration>
+    <cloudHubDeployment>
+      <applicationName>loan-web-services</applicationName>
+      <environment>${mule.env}</environment>
+      <region>us-east-1</region>
+      <workers>1</workers>
+      <workerType>MICRO</workerType>
+    </cloudHubDeployment>
+  </configuration>
+</plugin>
+      
 
     </plugins>
   </build>
