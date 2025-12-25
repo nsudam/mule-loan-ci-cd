@@ -31,19 +31,17 @@
 				<extensions>true</extensions>
 				
 				  <configuration>
-					    <cloudHubDeployment>
-							  <uri>https://anypoint.mulesoft.com</uri>
-							  <muleVersion>${app.runtime}</muleVersion>
-							
-							  <applicationName>${applicationName}</applicationName>
-							  <environment>${environment}</environment>
-							
-							  <workers>
-							    <amount>${replicas}</amount>
-							    <type>${vCores}</type>
-							  </workers>
-                        </cloudHubDeployment>
-					    
+					   <cloudHubDeployment>
+						  <uri>https://anypoint.mulesoft.com</uri>
+						  <muleVersion>${app.runtime}</muleVersion>
+						
+						  <applicationName>${applicationName}</applicationName>
+						  <environment>${environment}</environment>
+						
+						  <workers>${replicas}</workers>
+						  <workerType>${vCores}</workerType>
+						  
+						</cloudHubDeployment>		    
              </configuration>
 			</plugin>
 		</plugins>
